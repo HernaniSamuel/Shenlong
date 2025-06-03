@@ -1,0 +1,51 @@
+# Pasta de configurações do PyCharm
+.idea/
+
+# Arquivos de cache do Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ambiente virtual
+venv/
+.env/
+.venv/
+
+# Arquivos de logs e temporários
+*.log
+*.tmp
+
+# Caches de ferramentas de build
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Arquivos de backup
+*.bak
+*.swp
+
+# Pastas de dados do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Ferramentas de lint/format
+.pytest_cache/
+.mypy_cache/
+.coverage
+
+# Arquivos de IDE genéricos
+*.sublime-workspace
+*.sublime-project
+.vscode/
+
+# Pasta de resultados e arquivos gerados
+*.out
+*.o
+*.obj
+*.dll
+*.exe
+*.so
+
+# Adicione qualquer coisa específica do seu projeto
