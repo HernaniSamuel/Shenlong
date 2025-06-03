@@ -1,0 +1,5 @@
+int x = 10
+float y = 1.5
+x = y
+int z = 2
+print("valor de x: ", x, " valor de z: ", z)

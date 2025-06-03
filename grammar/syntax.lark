@@ -1,0 +1,36 @@
+?start: program
+program: statement+
+
+// Anotação opcional (ex: @cpp ou @sycl)
+statement: annotation? (var_decl | assignment | print_stmt)
+annotation: "@" NAME
+
+// Print
+print_stmt: "print" "(" [print_arg ("," print_arg)*] ")"
+print_arg: expr | STRING
+
+// Declaração de variável
+var_decl: type NAME "=" expr
+
+// Atribuição (com cast explícito opcional)
+assignment: NAME "=" cast? expr
+
+// Cast explícito
+cast: "(" type ")"
+
+// Tipo genérico (deixa pro Clang validar!)
+type: NAME
+
+// Expressões básicas (números ou variáveis)
+?expr: NUMBER        -> number
+     | NAME          -> var_reference
+
+// Definições de tokens
+NAME: /[a-zA-Z_][a-zA-Z0-9_:]*/
+NUMBER: /\d+(\.\d+)?/
+STRING: /"([^"\\]|\\.)*"/
+
+// Ignorar comentários
+%ignore /\s+/
+%ignore /#[^\n]*/
+%ignore /""".*?"""/s
