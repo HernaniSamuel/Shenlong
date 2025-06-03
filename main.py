@@ -41,6 +41,7 @@ def main():
     # Cria um template com o main()
     cpp_template = """// Code generated automatically by Shenlong the Tiger!
 #include <iostream>
+#include <cmath>
 
 int main() {
 %s

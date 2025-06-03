@@ -39,3 +39,14 @@ class PrintStatement(Node):
 class String(Node):
     def __init__(self, value):
         self.value = value
+
+class BinaryOp(Node):
+    def __init__(self, left, op, right):
+        self.left = left
+        self.op = op  # string: '+', '-', '*', etc.
+        self.right = right
+
+class UnaryOp(Node):
+    def __init__(self, op, operand):
+        self.op = op  # '-', 'not', '~'
+        self.operand = operand

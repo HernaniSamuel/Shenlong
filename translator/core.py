@@ -1,4 +1,4 @@
-from slast.nodes import Program, VarDecl, Assignment, TypeNode, Number, VarReference, PrintStatement, String
+from slast.nodes import Program, VarDecl, Assignment, TypeNode, Number, VarReference, PrintStatement, String, UnaryOp, BinaryOp
 
 class CoreTranslator:
     def translate(self, node):
@@ -35,5 +35,21 @@ class CoreTranslator:
         elif isinstance(node, String):
             # Gera a string com aspas duplas
             return f'"{node.value}"'
+
+        elif isinstance(node, BinaryOp):
+            left = self.translate(node.left)
+            right = self.translate(node.right)
+            if node.op == "**":
+                # Em C++, usa pow() para exponenciação
+                return f"pow({left}, {right})"
+            else:
+                return f"({left} {node.op} {right})"
+
+        elif isinstance(node, UnaryOp):
+            if node.op == "not":
+                return f"!({self.translate(node.operand)})"
+            else:
+                return f"{node.op}({self.translate(node.operand)})"
+
         else:
             raise Exception(f"Unknown node: {node}")
